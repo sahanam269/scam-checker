@@ -1,0 +1,47 @@
+body { font-family: system-ui, sans-serif; background: #0f172a; color: #e2e8f0; margin: 0; }
+.container { max-width: 760px; margin: 0 auto; padding: 24px; }
+h1 { margin-bottom: 4px; }
+.subtitle { color: #94a3b8; }
+
+textarea {
+  width: 100%; box-sizing: border-box; padding: 12px;
+  border-radius: 10px; border: 1px solid #334155;
+  background: #1e293b; color: #e2e8f0; font-size: 16px;
+}
+button {
+  margin-top: 10px; padding: 12px 24px; border: 0; border-radius: 10px;
+  background: #3b82f6; color: white; font-size: 16px; cursor: pointer;
+}
+button:hover { background: #2563eb; }
+
+.result { margin-top: 24px; padding: 20px; border-radius: 12px; border-left: 8px solid; background: #1e293b; }
+.result.low      { border-color: #22c55e; }
+.result.medium   { border-color: #eab308; }
+.result.high     { border-color: #f97316; }
+.result.critical { border-color: #ef4444; }
+
+.bar { height: 14px; background: #334155; border-radius: 7px; overflow: hidden; }
+.fill { height: 100%; background: linear-gradient(90deg, #22c55e, #eab308, #ef4444); }
+.tips, footer { margin-top: 28px; color: #94a3b8; font-size: 14px; }
+
+/* 🧭 Navigation */
+.nav { display: flex; gap: 20px; padding: 14px 24px; background: #1e293b; border-bottom: 1px solid #334155; }
+.nav a { color: #93c5fd; text-decoration: none; font-weight: 600; }
+.nav a:hover { text-decoration: underline; }
+
+/* 📊 Stats cards */
+.stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 12px; margin: 20px 0; }
+.card { background: #1e293b; padding: 14px; border-radius: 10px; text-align: center; border-top: 4px solid #3b82f6; }
+.card .num { display: block; font-size: 26px; font-weight: 700; }
+.card.low { border-color: #22c55e; } .card.medium { border-color: #eab308; }
+.card.high { border-color: #f97316; } .card.critical { border-color: #ef4444; }
+
+/* 📋 Table */
+table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+th, td { text-align: left; padding: 10px; border-bottom: 1px solid #334155; }
+th { color: #94a3b8; }
+
+/* 📚 Awareness cards */
+.scam-card { background: #1e293b; padding: 18px 22px; border-radius: 12px; margin: 18px 0; border-left: 6px solid #3b82f6; }
+.scam-card.emergency { border-color: #ef4444; }
+.todo { background: #0f172a; padding: 10px; border-radius: 8px; }

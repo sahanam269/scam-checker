@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}Scam Awareness{% endblock %}
+
+{% block content %}
+<h1>📚 Scam Awareness</h1>
+<p class="subtitle">Know the tricks, so they don't work on you 💪</p>
+
+{% for s in scams %}
+<section class="scam-card">
+  <h2>{{ s.icon }} {{ s.title }}</h2>
+  <p><strong>How it works:</strong> {{ s.how }}</p>
+  <p><strong>🚩 Red flags:</strong></p>
+  <ul>
+    {% for flag in s.red_flags %}<li>{{ flag }}</li>{% endfor %}
+  </ul>
+  <p class="todo"><strong>✅ What to do:</strong> {{ s.what_to_do }}</p>
+</section>
+{% endfor %}
+
+<section class="scam-card emergency">
+  <h2>🚨 Already scammed? Act now</h2>
+  <ol>
+    {% for step in steps %}<li>{{ step }}</li>{% endfor %}
+  </ol>
+</section>
+{% endblock %}

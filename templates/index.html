@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>🛡️ Scam Risk Checker</h1>
+<p class="subtitle">Paste a suspicious message or link. We'll look for phishing, digital arrest scams, fake URLs and risky apps. Hindi/Hinglish supported 🇮🇳</p>
+
+<form method="POST">
+  <textarea name="message" rows="8" placeholder="Paste the message or link here..." required>{{ text }}</textarea>
+  <button type="submit">🔍 Check Risk</button>
+</form>
+
+{% if result %}
+<section class="result {{ result.level | lower }}">
+  <h2>Risk Score: {{ result.score }}/100 — {{ result.level }}</h2>
+  <div class="bar"><div class="fill" style="width: {{ result.score }}%"></div></div>
+  <p class="advice">{{ result.advice }}</p>
+
+  {% if result.ml_percent is not none %}
+  <p>🤖 AI model's scam probability: <strong>{{ result.ml_percent }}%</strong>
+     &nbsp;|&nbsp; 📏 Rule-based score: <strong>{{ result.rule_score }}</strong></p>
+  {% endif %}
+
+  {% if result.findings %}
+  <h3>🚩 Red flags found</h3>
+  <ul>
+    {% for f in result.findings %}
+    <li><strong>{{ f.category }}</strong> (+{{ f.points }}): {{ f.message }}</li>
+    {% endfor %}
+  </ul>
+  {% else %}
+  <p>✅ No red flags detected.</p>
+  {% endif %}
+</section>
+{% endif %}
+
+<section class="tips">
+  <h3>📌 Remember</h3>
+  <ul>
+    <li>👮 Real police/CBI/ED <strong>never</strong> arrest anyone over a video call. "Digital arrest" does not exist.</li>
+    <li>🔑 Never share OTP, PIN or passwords with anyone.</li>
+    <li>📱 Don't install apps from links sent in messages.</li>
+    <li>📞 In India, if scammed, call <strong>1930</strong> or report at <strong>cybercrime.gov.in</strong> immediately.</li>
+  </ul>
+</section>
+
+<footer>⚠️ This is an awareness tool. It can miss scams or give false alarms.</footer>
+{% endblock %}

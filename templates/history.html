@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}History & Stats{% endblock %}
+
+{% block content %}
+<h1>🗄️ History & Stats</h1>
+<p class="subtitle">Only scores and red-flag categories are saved. Your messages are never stored 🔒</p>
+
+<div class="stats">
+  <div class="card"><span class="num">{{ stats.total }}</span>Checks done</div>
+  <div class="card"><span class="num">{{ stats.average }}</span>Average score</div>
+  {% for level in ["CRITICAL", "HIGH", "MEDIUM", "LOW"] %}
+  <div class="card {{ level | lower }}"><span class="num">{{ stats.by_level.get(level, 0) }}</span>{{ level }}</div>
+  {% endfor %}
+</div>
+
+<h3>🕒 Recent checks</h3>
+{% if rows %}
+<table>
+  <tr><th>When</th><th>Score</th><th>Level</th><th>Red-flag types</th></tr>
+  {% for r in rows %}
+  <tr>
+    <td>{{ r.created_at }}</td>
+    <td>{{ r.score }}</td>
+    <td>{{ r.level }}</td>
+    <td>{{ r.categories }}</td>
+  </tr>
+  {% endfor %}
+</table>
+{% else %}
+<p>Nothing here yet. Go check a message first! 🔍</p>
+{% endif %}
+{% endblock %}

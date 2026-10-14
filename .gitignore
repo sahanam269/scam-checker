@@ -1,0 +1,17 @@
+# 🐍 Python
+venv/
+__pycache__/
+*.pyc
+
+# 🗄️ Local database
+scam_checker.db
+
+# 🤖 Generated model
+model.pkl
+
+# 🔐 Secrets
+.env
+
+# 🧪 Tools
+.pytest_cache/
+.vscode/
